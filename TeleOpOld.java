@@ -109,7 +109,6 @@ public class TeleOpOld extends OpMode {
             dumpRotate.setPosition(0.0);
         else
             dumpRotate.setPosition(1.0);
-//I Hate Seth
-        
+
     }
 }

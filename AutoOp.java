@@ -53,7 +53,7 @@ public class AutoOp extends LinearOpMode {
         motorLeft.setPower(0);
         backRight.setPower(0);
         backLeft.setPower(0);
-
+        //YOUR A DERP HEAD (so am I)
 
     }
 }

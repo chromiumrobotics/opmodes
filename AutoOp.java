@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-/* Autonomous Program (linear procedural mode) */
 
 public class AutoOp extends LinearOpMode {
 
@@ -39,8 +38,7 @@ public class AutoOp extends LinearOpMode {
 
         waitForStart();
 
-        long startTime = System.currentTimeMillis(); //For measuring time
-
+        long startTime = System.currentTimeMillis();
 
         motorRight.setPower(s);
         motorLeft.setPower(s);

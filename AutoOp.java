@@ -39,7 +39,7 @@ public class AutoOp extends LinearOpMode {
 
         waitForStart();
 
-        long startTime = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis(); //For measuring time
 
 
         motorRight.setPower(s);

@@ -9,7 +9,7 @@ public class TeleOpOld extends OpMode {
     public TeleOpOld() {}
 
     DcMotor motorRight, motorLeft, backRight, backLeft, armExtend, armAdjust;
-    Servo wingRight, wingLeft, bdLeft, bdRight, dumpRotate, dumpExtend;
+    Servo wingRight, wingLeft, bd, dumpRotate, dumpExtend,
 
     @Override
     public void init() {
@@ -28,8 +28,8 @@ public class TeleOpOld extends OpMode {
         wingRight = hardwareMap.servo.get("wingRight"); // *for zip-line climbers*
         wingLeft = hardwareMap.servo.get("wingLeft");
 
-        bdLeft = hardwareMap.servo.get("bdLeft"); // pushing blocks
-        bdRight = hardwareMap.servo.get("bdRight");
+        bd = hardwareMap.servo.get("bd"); // pushing blocks
+
 
         dumpRotate = hardwareMap.servo.get("dumpRotate"); // Dumps climbers
         dumpExtend = hardwareMap.servo.get("dumpExtend"); // Swings out over beacon
@@ -62,13 +62,13 @@ public class TeleOpOld extends OpMode {
 
 
         if (gamepad1.left_trigger > 0.5 || gamepad1.right_trigger > 0.5) { // bulldozer
-            bdLeft.setPosition(.4);
-            bdRight.setPosition(.4);
+            bd.setPosition(.4);
+
         }
         else
             if (gamepad1.left_bumper || gamepad1.right_bumper) {
-                bdLeft.setPosition(1.0);
-                bdRight.setPosition(1.0);
+                bd.setPosition(1.0);
+
         }
 
 

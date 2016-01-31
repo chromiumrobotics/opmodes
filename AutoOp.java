@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class AutoOp extends LinearOpMode {
 
         DcMotor motorRight, motorLeft, backRight, backLeft, armExtend, armAdjust;
-        Servo wingRight, wingLeft, bdLeft, bdRight, dumpRotate, dumpExtend;
+        Servo wingRight, wingLeft, bd, dumpRotate, dumpExtend;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -28,8 +28,7 @@ public class AutoOp extends LinearOpMode {
         wingRight = hardwareMap.servo.get("wingRight");
         wingLeft = hardwareMap.servo.get("wingLeft");
 
-        bdLeft = hardwareMap.servo.get("bdLeft");
-        bdRight = hardwareMap.servo.get("bdRight");
+        bd = hardwareMap.servo.get("bd");
 
         dumpRotate = hardwareMap.servo.get("dumpRotate");
         dumpExtend = hardwareMap.servo.get("dumpExtend");
@@ -51,7 +50,7 @@ public class AutoOp extends LinearOpMode {
         motorLeft.setPower(0);
         backRight.setPower(0);
         backLeft.setPower(0);
-        //YOUR A DERP HEAD (so am I)
+
 
     }
 }

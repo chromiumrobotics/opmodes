@@ -110,7 +110,7 @@ public class TeleOpOld extends OpMode {
         else
             dumpRotate.setPosition(1.0);
 
-        if (gamepad2.y)//brake
+        if (gamepad2.y) //Brake
            brake.setPosition(0.4);
         else
             brake.setPosition(0.5);

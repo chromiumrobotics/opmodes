@@ -1,4 +1,4 @@
-package com.qualcomm.ftcrobotcontroller.opmodes1;
+package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;

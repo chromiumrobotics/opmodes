@@ -1,4 +1,4 @@
-package com.qualcomm.ftcrobotcontroller.opmodes1;
+package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -111,8 +111,8 @@ public class TeleOpOld extends OpMode {
             dumpRotate.setPosition(1.0);
 
         if (gamepad2.y) //Brake
-           brake.setPosition(0.4);
+           brake.setPosition(0.1);
         else
-            brake.setPosition(0.5);
+            brake.setPosition(0.35);
     }
 }

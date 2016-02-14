@@ -6,11 +6,13 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class TeleOpOld extends OpMode {
 
-    public TeleOpOld() {}
+    public TeleOpOld() {
+    }
 
     DcMotor motorRight, motorLeft, backRight, backLeft, armExtend, armAdjust;
     Servo wingRight, wingLeft, bd, dumpRotate, dumpExtend, brake;
-    boolean isEngaged;
+    boolean isInitialized = false;
+
 
     @Override
     public void init() {
@@ -34,13 +36,18 @@ public class TeleOpOld extends OpMode {
         brake = hardwareMap.servo.get("brake");
         dumpRotate = hardwareMap.servo.get("dumpRotate"); // Dumps climbers
         dumpExtend = hardwareMap.servo.get("dumpExtend"); // Swings out over beacon
-        isEngaged = false;
+        isInitialized = false;
 
     }
 
 
     @Override
-    public void loop(){
+    public void loop() {
+
+        if(!isInitialized) {
+            brake.setPosition(.35);
+            isInitialized=true;
+        }
 
         /* Gamepad 1 */
 
@@ -63,14 +70,11 @@ public class TeleOpOld extends OpMode {
             wingRight.setPosition(1.0);
 
 
-
         if (gamepad1.left_trigger > 0.5 || gamepad1.right_trigger > 0.5) { // bulldozer
             bd.setPosition(.4);
 
-        }
-        else
-            if (gamepad1.left_bumper || gamepad1.right_bumper) {
-                bd.setPosition(1.0);
+        } else if (gamepad1.left_bumper || gamepad1.right_bumper) {
+            bd.setPosition(1.0);
 
         }
 
@@ -81,9 +85,8 @@ public class TeleOpOld extends OpMode {
         /* Controls the arm adjustment with .2 buffer. */
         if (Math.abs(gamepad2.left_stick_y) > 0.2)
             armAdjust.setPower(-1 * gamepad2.left_stick_y * .25);
-        else
-            if (Math.abs(gamepad2.right_stick_y) > 0.2)
-                armAdjust.setPower(-1 * gamepad2.right_stick_y * .25);
+        else if (Math.abs(gamepad2.right_stick_y) > 0.2)
+            armAdjust.setPower(-1 * gamepad2.right_stick_y * .25);
         else
             armAdjust.setPower(0);
 
@@ -91,19 +94,16 @@ public class TeleOpOld extends OpMode {
         /*Controls the arm retraction (against the bungee)*/
         if (gamepad2.right_bumper)
             armExtend.setPower(1.0);
-        else
-            if (gamepad2.right_trigger > 0.5)
-                armExtend.setPower(-1 * gamepad2.right_trigger);
+        else if (gamepad2.right_trigger > 0.5)
+            armExtend.setPower(-1 * gamepad2.right_trigger);
         else
             armExtend.setPower(0);
 
 
-
         if (gamepad2.left_trigger > 0.5)
             dumpExtend.setPosition(0.6);
-        else
-            if (gamepad2.left_bumper)
-                dumpExtend.setPosition(0.3);
+        else if (gamepad2.left_bumper)
+            dumpExtend.setPosition(0.3);
         else
             dumpExtend.setPosition(0.5);
 
@@ -113,10 +113,8 @@ public class TeleOpOld extends OpMode {
         else
             dumpRotate.setPosition(1.0);
 
-        if (gamepad2.y && !isEngaged) //Brake
-           brake.setPosition(0.1);
-        else if(isEngaged){
-            brake.setPosition(.38);
-        }
+        if (gamepad2.y)
+            brake.setPosition(0.1);
+
     }
 }

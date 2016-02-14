@@ -10,6 +10,7 @@ public class TeleOpOld extends OpMode {
 
     DcMotor motorRight, motorLeft, backRight, backLeft, armExtend, armAdjust;
     Servo wingRight, wingLeft, bd, dumpRotate, dumpExtend, brake;
+    boolean isEngaged;
 
     @Override
     public void init() {
@@ -33,11 +34,13 @@ public class TeleOpOld extends OpMode {
         brake = hardwareMap.servo.get("brake");
         dumpRotate = hardwareMap.servo.get("dumpRotate"); // Dumps climbers
         dumpExtend = hardwareMap.servo.get("dumpExtend"); // Swings out over beacon
+        isEngaged = false;
+
     }
 
 
     @Override
-    public void loop() {
+    public void loop(){
 
         /* Gamepad 1 */
 
@@ -110,9 +113,10 @@ public class TeleOpOld extends OpMode {
         else
             dumpRotate.setPosition(1.0);
 
-        if (gamepad2.y) //Brake
+        if (gamepad2.y && !isEngaged) //Brake
            brake.setPosition(0.1);
-        else
-            brake.setPosition(0.35);
+        else if(isEngaged){
+            brake.setPosition(.38);
+        }
     }
 }

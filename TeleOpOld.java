@@ -26,6 +26,7 @@ public class TeleOpOld extends OpMode {
         backLeft.setDirection(DcMotor.Direction.REVERSE);
 
         armExtend = hardwareMap.dcMotor.get("armExtend"); // Lifts robot
+        armExtend.setDirection(DcMotor.Direction.REVERSE);
         armAdjust = hardwareMap.dcMotor.get("armAdjust"); // Arm angle
 
         wingRight = hardwareMap.servo.get("wingRight"); // *for zip-line climbers*
